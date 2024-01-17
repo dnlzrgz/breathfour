@@ -5,11 +5,37 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>breathfour</title>
-  <link rel="stylesheet" href="/style.css">
+  <link rel="stylesheet" type="text/css" href="/style.css" />
 </head>
 
-<body>
-  <h1>Hello, World</h1>
+<body class="w-full h-full" x-data>
+  <main class="bg-red-50 w-screen h-screen">
+    <p class="text-4xl" x-text="$store.app.currentStep"></p>
+    <button type="button" x-on:click="$store.app.applyPreset($store.app.presets.default)">Default</button>
+    <button type="button" x-on:click="$store.app.applyPreset($store.app.presets.focus)">Focus</button>
+    <button type="button" x-on:click="$store.app.applyPreset($store.app.presets.balance)">Balance</button>
+
+    <button type="button" x-on:click="$store.app.start()">Start</button>
+
+    <div>
+      <form class="flex flex-col">
+        <label for="inhaleDuration">Inhale:</label>
+        <input id="inhaleDuration" type="range" x-model="$store.app.inhaleDuration" min="1" max="30" />
+
+        <label for="holdAfterInhaleDuration">Hold:</label>
+        <input id="holdAfterInhaleDuration" type="range" x-model="$store.app.inhaleDuration" min="0" max="30" />
+
+        <label for="exhaleDuration">Exhale:</label>
+        <input id="exhaleDuration" type="range" x-model="$store.app.exhaleDuration" min="1" max="30" />
+
+        <label for="holdAfterExhaleDuration">Hold:</label>
+        <input id="holdAfterExhaleDuration" type="range" x-model="$store.app.inhaleDuration" min="0" max="30" />
+
+        <label for="cycles">Cycles:</label>
+        <input id="cycles" type="range" x-model="$store.app.inhaleDuration" min="1" max="60" />
+      </form>
+    </div>
+  </main>
   <script type="module" src="/main.js" defer></script>
 </body>
 
